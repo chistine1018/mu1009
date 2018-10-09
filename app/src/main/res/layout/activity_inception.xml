@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6AB60"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:textSize="20sp"
+        android:text="辨識度："
+        android:id="@+id/resolution"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/showImg"
+        android:layout_width="299dp"
+        android:layout_height="299dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="85dp"
+        android:background="#939393" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/frame03">
+
+        <TextView
+            android:id="@+id/showText"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:text="www"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="#F6AB60">
+
+        <LinearLayout
+            android:id="@+id/back"
+            android:onClick="onClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/arrow" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:gravity="center"
+                android:text="返回"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

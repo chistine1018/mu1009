@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6AB60"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/title01"
+        android:gravity="center"
+        android:paddingStart="30dp"
+        android:text="動物辨識"
+        android:textSize="24dp" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="101dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="80dp">
+
+        <TextView
+            android:id="@+id/startCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/main_background"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="拍照"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/footprint01" />
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/startFlipCard"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/main_background02"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="遊戲"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/footprint02" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/startBook"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/main_background03"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="圖鑑"
+            android:textSize="18dp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/footprint03" />
+    </RelativeLayout>
+
+</LinearLayout>
