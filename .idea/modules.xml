@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TensorflowTest-master.iml" filepath="$PROJECT_DIR$/TensorflowTest-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mu1009.iml" filepath="$PROJECT_DIR$/mu1009.iml" />
     </modules>
   </component>
 </project>

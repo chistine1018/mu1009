@@ -1,11 +1,9 @@
 package edu.imac.nutc.tensorflowtest.ui.book;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -33,11 +31,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     private ItemClickListener mClickListener;
     private ArrayList<String> imgPath;
     private Bitmap bmp;
-
+    private File[] imgAmount;
     // data is passed into the constructor
-    BookAdapter(Context context, ArrayList<String> data) {
+    BookAdapter(Context context, ArrayList<String> data, File[] imgAmount) {
         this.mInflater = LayoutInflater.from(context);
         this.imgPath = data;
+        this.imgAmount = imgAmount;
     }
 
     // inflates the cell layout from xml when needed
@@ -52,13 +51,13 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.myTextView.setText(imgPath.get(position));
-        String bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/BitmapReg";
-        File directory = new File(bitmapPath);
-        File[] imgAmount = directory.listFiles();
-
         bmp = BitmapFactory.decodeFile(imgAmount[position].getPath());
         Log.d("imgph",""+imgAmount[position].getPath());
-        holder.imageView.setImageBitmap(bmp);
+        if (imgAmount.length>0) {
+            holder.imageView.setImageBitmap(bmp);
+        }else{
+            holder.imageView.setImageResource(R.drawable.nofound);
+        }
     }
 
     // total number of cells
