@@ -17,7 +17,7 @@
         android:background="@drawable/title01"
         android:gravity="center"
         android:paddingStart="30dp"
-        android:text="相簿"
+        android:text="蒐集冊"
         android:textSize="24dp" />
 
     <LinearLayout

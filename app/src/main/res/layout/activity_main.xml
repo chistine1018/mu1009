@@ -105,7 +105,7 @@
                 android:background="@drawable/main_background03"
                 android:gravity="center"
                 android:onClick="onClick"
-                android:text="圖鑑"
+                android:text="蒐集冊"
                 android:textSize="18dp" />
 
             <ImageView
