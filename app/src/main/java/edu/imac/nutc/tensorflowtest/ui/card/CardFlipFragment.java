@@ -57,7 +57,7 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
 
         //產生亂數表元素
         int reItemSize = 2; //圖片重複數
-        for (int i = 1; i <= r1; i++) {
+        for (int i = 1; i <= 6; i++) {
             for (int j = 1; j <= reItemSize; j++) {
                 randomList.add(String.valueOf(i));
             }
