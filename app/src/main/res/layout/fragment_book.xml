@@ -7,9 +7,10 @@
     android:orientation="vertical">
 
     <TextView
+        android:layout_weight="2.5"
         android:id="@+id/titleFC"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="match_parent"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="30dp"
@@ -18,69 +19,78 @@
         android:paddingStart="30dp"
         android:text="相簿"
         android:textSize="24dp" />
+
     <LinearLayout
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="哺乳類"
-        android:layout_weight="1"
-        android:background="#FF3333"
-        android:id="@+id/mammalsBtn"/>
+        android:orientation="horizontal">
 
         <Button
+            android:id="@+id/mammalsBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="鳥類"
+            android:layout_weight="1"
+            android:background="#FF3333"
+            android:text="哺乳類" />
+
+        <Button
+            android:id="@+id/birdsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="#FFAA33"
-            android:layout_weight="1"
 
-            android:id="@+id/birdsBtn"/>
+            android:text="鳥類" />
+
         <Button
+            android:id="@+id/reptileBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="爬蟲類"
+            android:layout_weight="1"
             android:background="#FFFF77"
-            android:layout_weight="1"
 
-            android:id="@+id/reptileBtn"/>
+            android:text="爬蟲類" />
+
         <Button
+            android:id="@+id/amphibianBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="兩棲類"
+            android:layout_weight="1"
             android:background="#66FF66"
-            android:layout_weight="1"
 
-            android:id="@+id/amphibianBtn"/>
+            android:text="兩棲類" />
+
         <Button
+            android:id="@+id/fishBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="魚類"
+            android:layout_weight="1"
             android:background="#77DDFF"
-            android:layout_weight="1"
 
-            android:id="@+id/fishBtn"/>
+            android:text="魚類" />
+
         <Button
+            android:id="@+id/otherBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="其他"
-            android:background="#D28EFF"
             android:layout_weight="1"
+            android:background="#D28EFF"
 
-            android:id="@+id/otherBtn"/>
+            android:text="其他" />
     </LinearLayout>
 
     <RelativeLayout
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="0dp"
         android:background="@drawable/bg08"
         android:orientation="vertical">
 

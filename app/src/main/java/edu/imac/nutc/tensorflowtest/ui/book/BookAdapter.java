@@ -75,7 +75,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
             super(itemView);
             myTextView = itemView.findViewById(R.id.info_text);
             imageView = itemView.findViewById(R.id.book_item);
-            imageView.setRotation(90);
             itemView.setOnClickListener(this);
         }
 

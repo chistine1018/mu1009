@@ -17,6 +17,7 @@
         android:background="@drawable/footprint04" />
 
     <ImageView
+        android:layout_margin="3dp"
         android:id="@+id/photo_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

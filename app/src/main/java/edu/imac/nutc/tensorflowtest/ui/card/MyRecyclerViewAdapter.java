@@ -3,6 +3,7 @@ package edu.imac.nutc.tensorflowtest.ui.card;
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
@@ -29,7 +30,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private String[] mData = new String[0];
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
-    private Integer[] imageResource = {R.drawable.bird299, R.drawable.orange_card, R.drawable.yellow_card,
+    private Integer[] imageResource = {R.drawable.red_card, R.drawable.orange_card, R.drawable.yellow_card,
             R.drawable.green_card, R.drawable.blue_card, R.drawable.indigo_card, R.drawable.purple_card};
 
     private int checkEvent;
@@ -40,19 +41,25 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private ArrayList<View> itemViewList;
     private Handler handler;
     private Bitmap[] bitmapsResource;
+    private ArrayList<String> mImgRandomSelect;
+    private Bitmap bmp;
+    private String[] allBmpPath;
 
     //選取狀態
     private int[] mSelectRegister = new int[0];
 
-    MyRecyclerViewAdapter(Context context, String[] data, int[] selectRegister) {
+    MyRecyclerViewAdapter(Context context, String[] data, int[] selectRegister, ArrayList<String> imgRandomSelect) {
         handler = new Handler();
         selectList = new ArrayList<>();
         ivNumberList = new ArrayList<>();
         itemViewList = new ArrayList<>();
+        mImgRandomSelect = new ArrayList<>();
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
         this.mSelectRegister = selectRegister;
+        this.mImgRandomSelect = imgRandomSelect;
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -63,7 +70,12 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.myTextView.setText(mData[position]);
-        holder.mImageView.setImageResource(imageResource[Integer.parseInt(mData[position]) - 1]);
+        Bitmap bmp = BitmapFactory.decodeFile(mImgRandomSelect.get(Integer.parseInt(mData[position])-1));
+        if (mImgRandomSelect.size() >= 7 && mImgRandomSelect.size() != 0) {
+            holder.mImageView.setImageBitmap(bmp);
+        } else {
+            holder.mImageView.setImageResource(imageResource[Integer.parseInt(mData[position]) - 1]);
+        }
     }
 
     @Override
@@ -84,6 +96,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             myTextView = itemView.findViewById(R.id.info_text);
             mImageView = itemView.findViewById(R.id.photo_item);
             cardView = itemView.findViewById(R.id.photo_stroke);
+            mImageView.setRotation(90);
             itemView.setOnClickListener(this);
         }
 
@@ -92,7 +105,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             if (selectCard == 2) {
                 animator.setDuration(750);
                 animator.start();
-                if (selectList.get(0).equals(selectList.get(1))){
+                if (selectList.get(0).equals(selectList.get(1))) {
                     animatorBack.setDuration(750);
                     animatorBack.start();
                 }

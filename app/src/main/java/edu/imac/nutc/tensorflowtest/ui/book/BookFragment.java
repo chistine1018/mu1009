@@ -21,15 +21,17 @@ import java.util.ArrayList;
  * Created by user on 2018/7/12.
  */
 
-public class BookFragment extends AppCompatActivity implements BookAdapter.ItemClickListener,View.OnClickListener {
+public class BookFragment extends AppCompatActivity implements BookAdapter.ItemClickListener, View.OnClickListener {
     public static String TAG = BookFragment.class.getSimpleName();
     private BookAdapter adapter;
 
     public static BookFragment newInstance() {
         return new BookFragment();
     }
+
     private RecyclerView recyclerView;
     private String bitmapPath;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,64 +48,67 @@ public class BookFragment extends AppCompatActivity implements BookAdapter.ItemC
         File directory = new File(bitmapPath);
         File[] imgAmount = directory.listFiles();
         ArrayList<String> imgAmountReg = new ArrayList<>();
-        if (imgAmount!=null) {
+        if (imgAmount != null) {
             for (int i = 0; i < imgAmount.length; i++) {
                 imgAmountReg.add(i, "" + i);
             }
             recyclerView.setItemViewCacheSize(imgAmount.length * 2 - 15);
             recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         }
-            adapter = new BookAdapter(this, imgAmountReg, imgAmount);
-            adapter.setClickListener(this);
-            recyclerView.setAdapter(adapter);
-
+        adapter = new BookAdapter(this, imgAmountReg, imgAmount);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
     }
-
 
     @Override
     public void onItemClick(View view, int position) {
         Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
     }
 
-    private void setData(String name){
-        bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/"+name;
+    private void setData(String name) {
+        bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/" + name;
         File directory = new File(bitmapPath);
         File[] imgAmount = directory.listFiles();
         ArrayList<String> imgAmountReg = new ArrayList<>();
-        if (imgAmount!=null) {
+        if (imgAmount != null) {
             for (int i = 0; i < imgAmount.length; i++) {
                 imgAmountReg.add(i, "" + i);
             }
             recyclerView.setItemViewCacheSize(imgAmount.length * 2 - 15);
             recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         }
-
-            adapter = new BookAdapter(this, imgAmountReg,imgAmount);
-            adapter.setClickListener(this);
-            recyclerView.setAdapter(adapter);
-
+        adapter = new BookAdapter(this, imgAmountReg, imgAmount);
+        adapter.setClickListener(this);
+        recyclerView.setAdapter(adapter);
     }
+
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.mammalsBtn:{
+        switch (v.getId()) {
+            case R.id.mammalsBtn: {
                 setData("Mammals");
-                break;}
-            case R.id.amphibianBtn:{
+                break;
+            }
+            case R.id.amphibianBtn: {
                 setData("Amphibian");
-                break;}
-            case R.id.birdsBtn:{
+                break;
+            }
+            case R.id.birdsBtn: {
                 setData("Bird");
-                break;}
-            case R.id.fishBtn:{
+                break;
+            }
+            case R.id.fishBtn: {
                 setData("Fish");
-                break;}
-            case R.id.reptileBtn:{
+                break;
+            }
+            case R.id.reptileBtn: {
                 setData("Reptile");
-                break;}
-            case R.id.otherBtn:{
+                break;
+            }
+            case R.id.otherBtn: {
                 setData("Other");
-                break;}
+                break;
+            }
         }
     }
 }

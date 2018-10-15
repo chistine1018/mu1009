@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,10 +31,18 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
     private ArrayList<String> randomList;
     private ArrayList<String> reList;
     private ArrayList<String> randomImgList;
-    private ArrayList<String> imgSum;
     private int r1;
     private int r2;
     private int RandomSize;
+
+    private int imgStatus;
+    private ArrayList<Integer> imgSum;
+    private ArrayList<Integer> imgSave;
+    private int imgRandom;
+
+    private ArrayList<String> setBitmapPath;
+    private String bitmapPath;
+    private ArrayList<String> selectBmp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,28 +79,12 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
             selectRegister[i] = 1;
         }
 
-        //圖片隨機選七張
-        String bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/BitmapReg";
-        File directory = new File(bitmapPath);
-        File[] imgAmount = directory.listFiles();
-        if (imgAmount.length<7){
-        }
-
-        //圖片總和
-        for (int i = 1; i <= imgAmount.length; i++) {
-            imgSum.add(String.valueOf(i));
-        }
-
-        for (int i = 1; i <= 7; i++) {
-            int imgRandomCheck = random.nextInt(imgAmount.length-i - 2) + 2;//1~img
-        }
-
-
-//            randomImgList.add(String.valueOf(imgRandomCheck));
+        //imgSelect
+        selcetImgType();
         RecyclerView recyclerView = findViewById(R.id.my_recycler);
         int numberOfColumns = 3;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-        adapter = new MyRecyclerViewAdapter(this, data, selectRegister);
+        adapter = new MyRecyclerViewAdapter(this, data, selectRegister, selectBmp);
         adapter.setClickListener(this);
         recyclerView.setItemViewCacheSize(r1 * reItemSize - 15);
         recyclerView.setAdapter(adapter);
@@ -100,5 +93,32 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
     @Override
     public void onItemClick(View view, int position, int score) {
         passTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void selcetImgType() {
+        Random random = new Random();
+        setBitmapPath = new ArrayList<>();
+        selectBmp = new ArrayList<>();
+        String[] imgType = {"Mammals", "Amphibian", "Bird", "Fish", "Reptile", "Other"};
+        for (int i = 0; i <= 5; i++) {
+            bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/" + imgType[i];
+            File directory = new File(bitmapPath);
+            File[] imgAmount = directory.listFiles();
+            if (imgAmount != null) {
+                for (int j = 0; j < imgAmount.length; j++) {
+                    setBitmapPath.add(imgAmount[j].getPath());
+                }
+            }
+            Log.e("test", "" + bitmapPath);
+            Log.e("test", "" + setBitmapPath);
+        }
+
+        for (int i = 0; i < 7; i++) {
+            int t = random.nextInt(setBitmapPath.size());
+            selectBmp.add(setBitmapPath.get(t));
+            setBitmapPath.remove(t);
+            Log.e("test", "" + selectBmp.get(i));
+        }
+
     }
 }

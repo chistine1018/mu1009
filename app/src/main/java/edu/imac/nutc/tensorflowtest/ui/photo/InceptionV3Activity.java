@@ -80,52 +80,27 @@ public class InceptionV3Activity extends AppCompatActivity {
 
         //start camera
         ContentValues value = new ContentValues();
-//        Uri uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-//                value);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        intent.putExtra(MediaStore.EXTRA_OUTPUT);
         startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-        //init();
     }
-//    public void camaraBtnOnclick() {
-//
-//        String fileName = "testphoto.jpg";
-//        ContentValues values = new ContentValues();
-//        values.put(MediaStore.Images.Media.TITLE, fileName);
-//        values.put(MediaStore.Images.Media.DESCRIPTION,
-//                "Image capture by camera");
-//        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
-//        imageUri = getActivity().getContentResolver().insert(
-//                MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
-//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-//        intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
-//        startActivityForResult(intent, CAMERA);
-//    }
+
     //拍照完畢或選取圖片後呼叫此函式
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.e("urii", "onActivityResult: "+data );
+        Log.e("urii", "onActivityResult: " + data);
         //藉由requestCode判斷是否為開啟相機或開啟相簿而呼叫的，且data不為null
-        if ((requestCode == REQUEST_IMAGE_CAPTURE || requestCode == PHOTO)&&data!=null) {
+        if ((requestCode == REQUEST_IMAGE_CAPTURE || requestCode == PHOTO) && data != null) {
             //取得照片路徑uri
             Uri uri = data.getData();
             ContentResolver contentResolver = this.getContentResolver();
 
-//            try {
-                Log.e("uri", "onActivityResult: "+uri );
-                Bundle extras = data.getExtras();
-                Bitmap imageBitmap = (Bitmap) extras.get("data");
-//                Bitmap bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(uri));
-                mImg.setImageBitmap(changeBitmapSize(imageBitmap));
-                mImg.setRotation(90);
-                //init(changeBitmapSize(bitmap));
-//            } catch (FileNotFoundException e) {
-//            }
-//        }
-
-        super.onActivityResult(requestCode, resultCode, data);
-    }
+            Log.e("uri", "onActivityResult: " + uri);
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            mImg.setImageBitmap(changeBitmapSize(imageBitmap));
+            mImg.setRotation(0);
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     private Bitmap changeBitmapSize(Bitmap bitmap) {
@@ -172,57 +147,57 @@ public class InceptionV3Activity extends AppCompatActivity {
 
     private void saveBitmap(Bitmap bmp) {
         String dataName = result.get(0).getLabel();
-        Log.e("data", "saveBitmap: "+dataName );
+        Log.e("data", "saveBitmap: " + dataName);
         DataSort dataSort = new DataSort();
         Boolean other = true;
         for (String s : dataSort.mammalsArray) {
-            if (s.trim().equals(dataName)){
-                Log.e("1", "saveBitmap: " );
-                creatAlbum(bmp,"Mammals");
+            if (s.trim().equals(dataName)) {
+                Log.e("1", "saveBitmap: ");
+                creatAlbum(bmp, "Mammals");
                 other = false;
             }
         }
         for (String s : dataSort.amphibianArray) {
-            if (s.trim().equals(dataName)){
-                Log.e("2", "saveBitmap: " );
-                creatAlbum(bmp,"Amphibian");
+            if (s.trim().equals(dataName)) {
+                Log.e("2", "saveBitmap: ");
+                creatAlbum(bmp, "Amphibian");
                 other = false;
             }
         }
         for (String s : dataSort.birdArray) {
-            if (s.trim().equals(dataName)){
-                Log.e("3", "saveBitmap: " );
-                creatAlbum(bmp,"Bird");
+            if (s.trim().equals(dataName)) {
+                Log.e("3", "saveBitmap: ");
+                creatAlbum(bmp, "Bird");
                 other = false;
             }
         }
         for (String s : dataSort.fishArray) {
-            if (s.trim().equals(dataName)){
-                Log.e("4", "saveBitmap: " );
-                creatAlbum(bmp,"Fish");
+            if (s.trim().equals(dataName)) {
+                Log.e("4", "saveBitmap: ");
+                creatAlbum(bmp, "Fish");
                 other = false;
             }
         }
         for (String s : dataSort.reptileArray) {
-            if (s.trim().equals(dataName)){
-                Log.e("5", "saveBitmap: " );
-                creatAlbum(bmp,"Reptile");
+            if (s.trim().equals(dataName)) {
+                Log.e("5", "saveBitmap: ");
+                creatAlbum(bmp, "Reptile");
                 other = false;
             }
         }
         for (String s : dataSort.otherArray) {
-            if (other){
-                Log.e("6", "saveBitmap: " );
-                creatAlbum(bmp,"Other");
+            if (other) {
+                Log.e("6", "saveBitmap: ");
+                creatAlbum(bmp, "Other");
             }
         }
 
     }
 
-    private void creatAlbum(Bitmap bmp,String name){
+    private void creatAlbum(Bitmap bmp, String name) {
 
-        String bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/"+name;
-        String bitmapName =result.get(0).getLabel()+ ".jpg";
+        String bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/" + name;
+        String bitmapName = result.get(0).getLabel() + ".jpg";
         File myBitmapDir = new File(bitmapPath);
         if (!myBitmapDir.exists()) {
             myBitmapDir.mkdirs();
@@ -239,13 +214,13 @@ public class InceptionV3Activity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     private void init(Bitmap bitmap) {
         inferenceInterface = new TensorFlowInferenceInterface(getAssets(), MODEL_FILE);
         intValues = new int[INPUT_SIZE * INPUT_SIZE];
         inputFloat = new float[INPUT_SIZE * INPUT_SIZE * 3];
         result = new ArrayList<>();
         loadLabelModel();
-        //convertBitmapToByteBuffer(getBitmapFromAsset(this, "bird299.png"));
         convertBitmapToByteBuffer(bitmap);
 
     }
