@@ -272,7 +272,7 @@ public class InceptionV3Activity extends AppCompatActivity {
             Log.d(TAG, "label : " + result.get(i).getLabel() + "value : " + result.get(i).getValue());
         }
         mImagText.setText(result.get(0).getLabel());
-        resolution.setText("辨識度：" + result.get(0).getValue());
+        resolution.setText("辨識度：" + (Math.floor(result.get(0).getValue()*10000))/100 +"%" );
     }
 
     private void sortArray() {

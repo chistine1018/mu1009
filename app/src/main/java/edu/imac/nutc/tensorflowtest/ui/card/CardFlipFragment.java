@@ -109,18 +109,17 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
                     setBitmapPath.add(imgAmount[j].getPath());
                 }
             }
-            Log.e("test", "" + bitmapPath);
-            Log.e("test", "" + setBitmapPath);
+            //Log.e("test", "" + bitmapPath);
+            //Log.e("test", "" + setBitmapPath);
         }
         if (setBitmapPath.size() >= 7) {
             for (int i = 0; i < 7; i++) {
                 int t = random.nextInt(setBitmapPath.size());
                 selectBmp.add(setBitmapPath.get(t));
                 setBitmapPath.remove(t);
-                Log.e("test", "" + selectBmp.get(i));
+                //Log.e("test", "" + selectBmp.get(i));
             }
         }
-
     }
 
     public void onClick(View view) {
