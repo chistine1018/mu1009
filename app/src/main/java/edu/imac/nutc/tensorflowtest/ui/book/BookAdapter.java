@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import edu.imac.nutc.tensorflowtest.R;
 
@@ -25,7 +26,7 @@ import java.util.ArrayList;
  */
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
-
+    private Context mContext;
     private String[] mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
@@ -37,6 +38,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         this.mInflater = LayoutInflater.from(context);
         this.imgPath = data;
         this.imgAmount = imgAmount;
+        this.mContext = context;
     }
 
     // inflates the cell layout from xml when needed
@@ -52,7 +54,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.myTextView.setText(imgPath.get(position));
         bmp = BitmapFactory.decodeFile(imgAmount[position].getPath());
-        Log.d("imgph",""+imgAmount[position].getPath());
+        //Log.d("imgph",""+imgAmount[position].getPath());
         if (imgAmount.length>0) {
             holder.imageView.setImageBitmap(bmp);
         }else{
@@ -81,6 +83,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         @Override
         public void onClick(View view) {
             if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            int getPos =  getAdapterPosition();
+            Toast.makeText(mContext, ""+imgAmount[getPos].getName().substring(0,imgAmount[getPos].getName().length()-4), Toast.LENGTH_SHORT).show();
         }
     }
 

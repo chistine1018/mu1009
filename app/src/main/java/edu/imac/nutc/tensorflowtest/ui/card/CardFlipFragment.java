@@ -135,6 +135,7 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
                     setBitmapPath.add(imgAmount[j].getPath());
                 }
             }
+
         }
         if (setBitmapPath.size() >= 7) {
             for (int i = 0; i < 7; i++) {
@@ -157,9 +158,8 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
                 setBitmapPath.remove(a.get(i));
             }
         }
-
-
     }
+
 
     private void noRecycle(ArrayList a){
         int number = 0;

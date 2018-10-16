@@ -31,6 +31,7 @@
         android:background="@drawable/frame03">
 
         <TextView
+            android:textSize="18sp"
             android:id="@+id/showText"
             android:layout_centerInParent="true"
             android:text="www"
