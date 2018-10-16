@@ -46,4 +46,13 @@
         android:textSize="60dp"
         android:visibility="invisible" />
 
+    <ImageView
+        android:onClick="onClick"
+        android:id="@+id/backCf"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/back"
+        android:layout_width="32dp"
+        android:layout_height="38dp"  />
+
 </RelativeLayout>

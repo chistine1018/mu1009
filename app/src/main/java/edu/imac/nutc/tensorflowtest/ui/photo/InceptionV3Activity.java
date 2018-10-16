@@ -53,7 +53,7 @@ public class InceptionV3Activity extends AppCompatActivity {
     private int[] intValues;
     private float[] inputFloat;
     private ArrayList<RecognitionUnit> result;
-    private LinearLayout backBtn;
+    private ImageView backBtn;
 
     //camera
     private ImageView mImg;
@@ -76,7 +76,7 @@ public class InceptionV3Activity extends AppCompatActivity {
         mImg = findViewById(R.id.showImg);
         mImagText = findViewById(R.id.showText);
         resolution = findViewById(R.id.resolution);
-        backBtn = findViewById(R.id.back);
+        backBtn = findViewById(R.id.backIc);
 
         //start camera
         ContentValues value = new ContentValues();
@@ -292,12 +292,9 @@ public class InceptionV3Activity extends AppCompatActivity {
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.back:
-                Intent backActivity = new Intent();
-                backActivity.setClass(InceptionV3Activity.this, MainActivity.class);
-                startActivity(backActivity);
+            case R.id.backIc:
+                onBackPressed();
                 break;
         }
     }
-
 }

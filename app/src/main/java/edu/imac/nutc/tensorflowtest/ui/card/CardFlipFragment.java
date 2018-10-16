@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import edu.imac.nutc.tensorflowtest.R;
@@ -35,20 +36,19 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
     private int r2;
     private int RandomSize;
 
-    private int imgStatus;
-    private ArrayList<Integer> imgSum;
-    private ArrayList<Integer> imgSave;
-    private int imgRandom;
-
     private ArrayList<String> setBitmapPath;
     private String bitmapPath;
     private ArrayList<String> selectBmp;
+
+    private ImageView backCf;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardflip);
         passTextView = findViewById(R.id.pass_tv);
+        backCf = findViewById(R.id.backCf);
+
         randomList = new ArrayList<>();
         reList = new ArrayList<>();
         randomImgList = new ArrayList<>();
@@ -86,7 +86,7 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         adapter = new MyRecyclerViewAdapter(this, data, selectRegister, selectBmp);
         adapter.setClickListener(this);
-        recyclerView.setItemViewCacheSize(r1 * reItemSize - 15);
+        recyclerView.setItemViewCacheSize(6 * reItemSize - 15);
         recyclerView.setAdapter(adapter);
     }
 
@@ -112,13 +112,28 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
             Log.e("test", "" + bitmapPath);
             Log.e("test", "" + setBitmapPath);
         }
-
-        for (int i = 0; i < 7; i++) {
-            int t = random.nextInt(setBitmapPath.size());
-            selectBmp.add(setBitmapPath.get(t));
-            setBitmapPath.remove(t);
-            Log.e("test", "" + selectBmp.get(i));
+        if (setBitmapPath.size() >= 7) {
+            for (int i = 0; i < 7; i++) {
+                int t = random.nextInt(setBitmapPath.size());
+                selectBmp.add(setBitmapPath.get(t));
+                setBitmapPath.remove(t);
+                Log.e("test", "" + selectBmp.get(i));
+            }
         }
 
     }
+
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.backCf:
+                onBackPressed();
+                break;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 }

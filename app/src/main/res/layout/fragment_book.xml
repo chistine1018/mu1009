@@ -1,111 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#F6AB60"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_weight="2.5"
-        android:id="@+id/titleFC"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/title01"
-        android:gravity="center"
-        android:paddingStart="30dp"
-        android:text="蒐集冊"
-        android:textSize="24dp" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/mammalsBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FF3333"
-            android:text="哺乳類" />
-
-        <Button
-            android:id="@+id/birdsBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFAA33"
-
-            android:text="鳥類" />
-
-        <Button
-            android:id="@+id/reptileBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#FFFF77"
-
-            android:text="爬蟲類" />
-
-        <Button
-            android:id="@+id/amphibianBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#66FF66"
-
-            android:text="兩棲類" />
-
-        <Button
-            android:id="@+id/fishBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#77DDFF"
-
-            android:text="魚類" />
-
-        <Button
-            android:id="@+id/otherBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#D28EFF"
-
-            android:text="其他" />
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="0dp"
-        android:background="@drawable/bg08"
+        android:background="#F6AB60"
         android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/book_recyclerView"
+        <TextView
+            android:id="@+id/titleFC"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_weight="2.5"
+            android:background="@drawable/title01"
+            android:gravity="center"
+            android:paddingStart="30dp"
+            android:text="蒐集冊"
+            android:textSize="24dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/mammalsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FF3333"
+                android:text="哺乳類" />
+
+            <Button
+                android:id="@+id/birdsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFAA33"
+
+                android:text="鳥類" />
+
+            <Button
+                android:id="@+id/reptileBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#FFFF77"
+
+                android:text="爬蟲類" />
+
+            <Button
+                android:id="@+id/amphibianBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#66FF66"
+
+                android:text="兩棲類" />
+
+            <Button
+                android:id="@+id/fishBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#77DDFF"
+
+                android:text="魚類" />
+
+            <Button
+                android:id="@+id/otherBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#D28EFF"
+
+                android:text="其他" />
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
             android:background="@drawable/bg08"
-            android:orientation="vertical" />
-    </RelativeLayout>
+            android:orientation="vertical">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/book_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg08"
+                android:orientation="vertical" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:onClick="onClick"
+        android:id="@+id/backBk"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dp"
+        android:background="@drawable/back"
+        android:layout_width="32dp"
+        android:layout_height="38dp" />
+
+</RelativeLayout>
 
 
-</LinearLayout>
+

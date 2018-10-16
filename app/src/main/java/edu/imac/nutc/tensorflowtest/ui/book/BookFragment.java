@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import edu.imac.nutc.tensorflowtest.R;
 
@@ -31,6 +32,7 @@ public class BookFragment extends AppCompatActivity implements BookAdapter.ItemC
 
     private RecyclerView recyclerView;
     private String bitmapPath;
+    private ImageView backBk;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class BookFragment extends AppCompatActivity implements BookAdapter.ItemC
         ((Button) findViewById(R.id.amphibianBtn)).setOnClickListener(this);
         ((Button) findViewById(R.id.otherBtn)).setOnClickListener(this);
         ((Button) findViewById(R.id.reptileBtn)).setOnClickListener(this);
-
+        backBk = findViewById(R.id.backBk);
         recyclerView = findViewById(R.id.book_recyclerView);
         bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/Mammals";
         File directory = new File(bitmapPath);
@@ -107,6 +109,10 @@ public class BookFragment extends AppCompatActivity implements BookAdapter.ItemC
             }
             case R.id.otherBtn: {
                 setData("Other");
+                break;
+            }
+            case R.id.backBk: {
+                onBackPressed();
                 break;
             }
         }

@@ -70,8 +70,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.myTextView.setText(mData[position]);
-        Bitmap bmp = BitmapFactory.decodeFile(mImgRandomSelect.get(Integer.parseInt(mData[position])-1));
         if (mImgRandomSelect.size() >= 7 && mImgRandomSelect.size() != 0) {
+            Bitmap bmp = BitmapFactory.decodeFile(mImgRandomSelect.get(Integer.parseInt(mData[position])-1));
             holder.mImageView.setImageBitmap(bmp);
         } else {
             holder.mImageView.setImageResource(imageResource[Integer.parseInt(mData[position]) - 1]);
