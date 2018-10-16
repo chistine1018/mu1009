@@ -2,6 +2,8 @@ package edu.imac.nutc.tensorflowtest.ui.card;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,6 +21,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -41,7 +45,11 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
     private ArrayList<String> selectBmp;
 
     private ImageView backCf;
-
+    private int useTime;
+    private Timer timer;
+    private TextView t;
+    private Handler handler;
+    private Runnable runnable;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,18 +92,36 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
         RecyclerView recyclerView = findViewById(R.id.my_recycler);
         int numberOfColumns = 3;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        Log.e("sele", "selcetImgType: "+selectBmp.toString() );
+
         adapter = new MyRecyclerViewAdapter(this, data, selectRegister, selectBmp);
         adapter.setClickListener(this);
         recyclerView.setItemViewCacheSize(6 * reItemSize - 15);
         recyclerView.setAdapter(adapter);
+
+        t = findViewById(R.id.userTimerText);
+        handler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                handler.postDelayed(this,1000);
+                useTime = useTime+1;
+            }
+        };
+        runnable.run();
     }
+
 
     @Override
     public void onItemClick(View view, int position, int score) {
         passTextView.setVisibility(View.VISIBLE);
+        t.setVisibility(View.VISIBLE);
+        t.setText("使用了"+useTime+"秒");
     }
 
     private void selcetImgType() {
+        ArrayList a = new ArrayList();
         Random random = new Random();
         setBitmapPath = new ArrayList<>();
         selectBmp = new ArrayList<>();
@@ -109,20 +135,49 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
                     setBitmapPath.add(imgAmount[j].getPath());
                 }
             }
-            Log.e("test", "" + bitmapPath);
-            Log.e("test", "" + setBitmapPath);
         }
         if (setBitmapPath.size() >= 7) {
             for (int i = 0; i < 7; i++) {
                 int t = random.nextInt(setBitmapPath.size());
-                selectBmp.add(setBitmapPath.get(t));
-                setBitmapPath.remove(t);
-                Log.e("test", "" + selectBmp.get(i));
+                a.add(t);
             }
         }
 
+        noRecycle(a);
+
+        while (a.size()<7){
+            int t = random.nextInt(setBitmapPath.size());
+            a.add(t);
+            noRecycle(a);
+        }
+        if (setBitmapPath.size() >= 7) {
+            for (int i = 0; i < a.size(); i++) {
+                Log.e("a", "selcetImgType: "+a.toString() );
+                selectBmp.add(setBitmapPath.get((Integer) a.get(i)));
+                setBitmapPath.remove(a.get(i));
+            }
+        }
+
+
     }
 
+    private void noRecycle(ArrayList a){
+        int number = 0;
+        for (int i = 0;i<a.size();i++){
+            for (int j = 0;j<a.size();j++){
+                if (a.get(i) == a.get(j)){
+                    number = number+1;
+                }
+
+                if (number == 2){
+                    a.remove(a.get(j));
+                    number = 0;
+                }
+
+            }
+            number = 0;
+        }
+    }
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.backCf:
@@ -136,4 +191,9 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
         super.onBackPressed();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(runnable);
+    }
 }
