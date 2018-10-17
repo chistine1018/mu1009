@@ -27,7 +27,7 @@
             android:background="@drawable/title01"
             android:gravity="center"
             android:paddingStart="30dp"
-            android:text="動物辨識"
+            android:text="AnimalGò"
             android:textSize="24dp" />
 
         <ImageView
@@ -54,7 +54,7 @@
                     android:background="@drawable/main_background"
                     android:gravity="center"
                     android:onClick="onClick"
-                    android:text="拍照"
+                    android:text="拍照辨識"
                     android:textSize="18dp" />
 
                 <ImageView
@@ -81,7 +81,7 @@
                     android:background="@drawable/main_background02"
                     android:gravity="center"
                     android:onClick="onClick"
-                    android:text="遊戲"
+                    android:text="翻牌遊戲"
                     android:textSize="18dp" />
 
                 <ImageView

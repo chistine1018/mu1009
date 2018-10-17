@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\user\Desktop\mumu\mu1011\mu1009\TensorflowTest-master.iml" filepath="C:\Users\user\Desktop\mumu\mu1011\mu1009\TensorflowTest-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mu1009.iml" filepath="$PROJECT_DIR$/mu1009.iml" />
     </modules>

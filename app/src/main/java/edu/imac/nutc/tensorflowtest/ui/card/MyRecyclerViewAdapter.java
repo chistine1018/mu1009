@@ -96,7 +96,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             myTextView = itemView.findViewById(R.id.info_text);
             mImageView = itemView.findViewById(R.id.photo_item);
             cardView = itemView.findViewById(R.id.photo_stroke);
-            mImageView.setRotation(90);
+            //mImageView.setRotation(90);
             itemView.setOnClickListener(this);
         }
 

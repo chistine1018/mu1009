@@ -50,6 +50,7 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
     private TextView t;
     private Handler handler;
     private Runnable runnable;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,41 +89,6 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
         }
 
         //imgSelect
-        selcetImgType();
-        RecyclerView recyclerView = findViewById(R.id.my_recycler);
-        int numberOfColumns = 3;
-        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-        Log.e("sele", "selcetImgType: "+selectBmp.toString() );
-
-        adapter = new MyRecyclerViewAdapter(this, data, selectRegister, selectBmp);
-        adapter.setClickListener(this);
-        recyclerView.setItemViewCacheSize(6 * reItemSize - 15);
-        recyclerView.setAdapter(adapter);
-
-        t = findViewById(R.id.userTimerText);
-        handler = new Handler();
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                // TODO Auto-generated method stub
-                handler.postDelayed(this,1000);
-                useTime = useTime+1;
-            }
-        };
-        runnable.run();
-    }
-
-
-    @Override
-    public void onItemClick(View view, int position, int score) {
-        passTextView.setVisibility(View.VISIBLE);
-        t.setVisibility(View.VISIBLE);
-        t.setText("使用了"+useTime+"秒");
-    }
-
-    private void selcetImgType() {
-        ArrayList a = new ArrayList();
-        Random random = new Random();
         setBitmapPath = new ArrayList<>();
         selectBmp = new ArrayList<>();
         String[] imgType = {"Mammals", "Amphibian", "Bird", "Fish", "Reptile", "Other"};
@@ -135,41 +101,72 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
                     setBitmapPath.add(imgAmount[j].getPath());
                 }
             }
-
         }
         if (setBitmapPath.size() >= 7) {
-            for (int i = 0; i < 7; i++) {
-                int t = random.nextInt(setBitmapPath.size());
-                a.add(t);
-            }
+            selcetImgType();
         }
 
-        noRecycle(a);
+        RecyclerView recyclerView = findViewById(R.id.my_recycler);
+        int numberOfColumns = 3;
+        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        //Log.e("sele", "selcetImgType: "+selectBmp.toString() );
 
-        while (a.size()<7){
+        adapter = new MyRecyclerViewAdapter(this, data, selectRegister, selectBmp);
+        adapter.setClickListener(this);
+        recyclerView.setItemViewCacheSize(6 * reItemSize - 15);
+        recyclerView.setAdapter(adapter);
+
+        t = findViewById(R.id.userTimerText);
+
+        handler = new Handler();
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                // TODO Auto-generated method stub
+                handler.postDelayed(this, 1000);
+                useTime = useTime + 1;
+            }
+        };
+        runnable.run();
+    }
+
+
+    @Override
+    public void onItemClick(View view, int position, int score) {
+        passTextView.setVisibility(View.VISIBLE);
+        t.setVisibility(View.VISIBLE);
+        t.setText("使用了" + useTime + "秒");
+    }
+
+    private void selcetImgType() {
+        ArrayList a = new ArrayList();
+        Random random = new Random();
+        for (int i = 0; i < 7; i++) {
+            int t = random.nextInt(setBitmapPath.size());
+            a.add(t);
+        }
+        noRecycle(a);
+        while (a.size() < 7) {
             int t = random.nextInt(setBitmapPath.size());
             a.add(t);
             noRecycle(a);
         }
-        if (setBitmapPath.size() >= 7) {
-            for (int i = 0; i < a.size(); i++) {
-                Log.e("a", "selcetImgType: "+a.toString() );
-                selectBmp.add(setBitmapPath.get((Integer) a.get(i)));
-                setBitmapPath.remove(a.get(i));
-            }
+        for (int i = 0; i < a.size(); i++) {
+            Log.e("a", "selcetImgType: " + a.toString());
+            selectBmp.add(setBitmapPath.get((Integer) a.get(i)));
+            setBitmapPath.remove(a.get(i));
         }
     }
 
-
-    private void noRecycle(ArrayList a){
+    private void noRecycle(ArrayList a) {
         int number = 0;
-        for (int i = 0;i<a.size();i++){
-            for (int j = 0;j<a.size();j++){
-                if (a.get(i) == a.get(j)){
-                    number = number+1;
+        for (int i = 0; i < a.size(); i++) {
+            for (int j = 0; j < a.size(); j++) {
+                if (a.get(i) == a.get(j)) {
+                    number = number + 1;
                 }
 
-                if (number == 2){
+                if (number == 2) {
                     a.remove(a.get(j));
                     number = 0;
                 }
@@ -178,6 +175,7 @@ public class CardFlipFragment extends AppCompatActivity implements MyRecyclerVie
             number = 0;
         }
     }
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.backCf:
