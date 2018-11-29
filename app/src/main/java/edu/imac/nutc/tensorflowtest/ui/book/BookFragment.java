@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import edu.imac.nutc.tensorflowtest.R;
+import info.hoang8f.widget.FButton;
 
 
 import java.io.File;
@@ -38,12 +39,12 @@ public class BookFragment extends AppCompatActivity implements BookAdapter.ItemC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_book);
-        ((Button) findViewById(R.id.mammalsBtn)).setOnClickListener(this);
-        ((Button) findViewById(R.id.fishBtn)).setOnClickListener(this);
-        ((Button) findViewById(R.id.birdsBtn)).setOnClickListener(this);
-        ((Button) findViewById(R.id.amphibianBtn)).setOnClickListener(this);
-        ((Button) findViewById(R.id.otherBtn)).setOnClickListener(this);
-        ((Button) findViewById(R.id.reptileBtn)).setOnClickListener(this);
+        ((FButton) findViewById(R.id.mammalsBtn)).setOnClickListener(this);
+        ((FButton) findViewById(R.id.fishBtn)).setOnClickListener(this);
+        ((FButton) findViewById(R.id.birdsBtn)).setOnClickListener(this);
+        ((FButton) findViewById(R.id.amphibianBtn)).setOnClickListener(this);
+        ((FButton) findViewById(R.id.otherBtn)).setOnClickListener(this);
+        ((FButton) findViewById(R.id.reptileBtn)).setOnClickListener(this);
         backBk = findViewById(R.id.backBk);
         recyclerView = findViewById(R.id.book_recyclerView);
         bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/Mammals";

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
@@ -31,58 +32,157 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
-            <Button
+            <!--<Button-->
+            <!--android:id="@+id/mammalsBtn"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            android:layout_weight="1"
+            <!--android:background="#FF3333"-->
+            <!--android:text="哺乳類" />-->
+            <info.hoang8f.widget.FButton
                 android:id="@+id/mammalsBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FF3333"
-                android:text="哺乳類" />
+                android:onClick="onClick"
+                android:text="哺乳類"
+                android:textColor="@color/fbutton_color_clouds"
+                android:textSize="18dp"
+                fbutton:cornerRadius="15dp"
+                fbutton:fButtonColor="@color/fbutton_color_alizarin"
+                fbutton:shadowColor="@color/fbutton_color_pomegranate"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
 
-            <Button
+                />
+
+            <info.hoang8f.widget.FButton
                 android:id="@+id/birdsBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFAA33"
+                android:onClick="onClick"
+                android:text="鳥類"
+                android:textColor="@color/fbutton_color_clouds"
+                android:textSize="18dp"
+                fbutton:cornerRadius="15dp"
+                fbutton:fButtonColor="@color/fbutton_color_orange"
+                fbutton:shadowColor="@color/fbutton_color_carrot"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
 
-                android:text="鳥類" />
+                />
 
-            <Button
+            <info.hoang8f.widget.FButton
                 android:id="@+id/reptileBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFFF77"
+                android:onClick="onClick"
+                android:text="爬蟲類"
+                android:textColor="@color/fbutton_color_clouds"
+                android:textSize="18dp"
+                fbutton:cornerRadius="15dp"
+                fbutton:fButtonColor="@color/fbutton_color_sun_flower"
+                fbutton:shadowColor="@color/fbutton_color_orange"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
 
-                android:text="爬蟲類" />
+                />
 
-            <Button
+            <info.hoang8f.widget.FButton
                 android:id="@+id/amphibianBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#66FF66"
+                android:onClick="onClick"
+                android:text="兩棲類"
+                android:textColor="@color/fbutton_color_clouds"
+                android:textSize="18dp"
+                fbutton:cornerRadius="15dp"
+                fbutton:fButtonColor="@color/fbutton_color_emerald"
+                fbutton:shadowColor="@color/fbutton_color_nephritis"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
 
-                android:text="兩棲類" />
+                />
 
-            <Button
+            <info.hoang8f.widget.FButton
                 android:id="@+id/fishBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#77DDFF"
+                android:onClick="onClick"
+                android:text="魚類"
+                android:textColor="@color/fbutton_color_clouds"
+                android:textSize="18dp"
+                fbutton:cornerRadius="15dp"
+                fbutton:fButtonColor="@color/colorPrimary"
+                fbutton:shadowColor="@color/colorPrimaryDark"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
 
-                android:text="魚類" />
+                />
 
-            <Button
+            <info.hoang8f.widget.FButton
                 android:id="@+id/otherBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#D28EFF"
+                android:onClick="onClick"
+                android:text="其他"
+                android:textColor="@color/fbutton_color_clouds"
+                android:textSize="18dp"
+                fbutton:cornerRadius="15dp"
+                fbutton:fButtonColor="@color/fbutton_color_amethyst"
+                fbutton:shadowColor="@color/fbutton_color_wisteria"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp"
 
-                android:text="其他" />
+                />
+
+            <!--<Button-->
+                <!--android:id="@+id/birdsBtn"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="#FFAA33"-->
+                <!--android:text="鳥類" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/reptileBtn"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="#FFFF77"-->
+                <!--android:text="爬蟲類" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/amphibianBtn"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="#66FF66"-->
+
+                <!--android:text="兩棲類" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/fishBtn"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="#77DDFF"-->
+
+                <!--android:text="魚類" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/otherBtn"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="#D28EFF"-->
+
+                <!--android:text="其他" />-->
         </LinearLayout>
 
         <RelativeLayout
@@ -113,13 +213,13 @@
     </LinearLayout>
 
     <ImageView
-        android:onClick="onClick"
         android:id="@+id/backBk"
+        android:layout_width="32dp"
+        android:layout_height="38dp"
         android:layout_alignParentEnd="true"
         android:layout_margin="10dp"
         android:background="@drawable/back"
-        android:layout_width="32dp"
-        android:layout_height="38dp" />
+        android:onClick="onClick" />
 
 </RelativeLayout>
 

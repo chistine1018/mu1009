@@ -39,4 +39,12 @@ dependencies {
     implementation 'org.tensorflow:tensorflow-lite:+'
     compile 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'org.jsoup:jsoup:1.11.1'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+
+    compile 'com.github.jd-alexander:android-flat-button:v1.1'
+    compile 'com.skyfishjy.ripplebackground:library:1.0.1'
+    implementation 'ru.github.igla:ferriswheel:1.2'
+
+
 }
