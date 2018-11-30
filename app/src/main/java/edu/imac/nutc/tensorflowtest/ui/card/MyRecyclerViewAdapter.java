@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import edu.imac.nutc.tensorflowtest.R;
 
 import java.io.File;
@@ -48,7 +49,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     //選取狀態
     private int[] mSelectRegister = new int[0];
 
-    MyRecyclerViewAdapter(Context context, String[] data, int[] selectRegister, ArrayList<String> imgRandomSelect) {
+    public MyRecyclerViewAdapter(Context context, String[] data, int[] selectRegister, ArrayList<String> imgRandomSelect) {
         handler = new Handler();
         selectList = new ArrayList<>();
         ivNumberList = new ArrayList<>();
@@ -71,7 +72,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.myTextView.setText(mData[position]);
         if (mImgRandomSelect.size() >= 7 && mImgRandomSelect.size() != 0) {
-            Bitmap bmp = BitmapFactory.decodeFile(mImgRandomSelect.get(Integer.parseInt(mData[position])-1));
+            Bitmap bmp = BitmapFactory.decodeFile(mImgRandomSelect.get(Integer.parseInt(mData[position]) - 1));
             holder.mImageView.setImageBitmap(bmp);
         } else {
             holder.mImageView.setImageResource(imageResource[Integer.parseInt(mData[position]) - 1]);
@@ -247,12 +248,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         }
     }
 
-    void setClickListener(ItemClickListener itemClickListener) {
+    public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
     public interface ItemClickListener {
         void onItemClick(View view, int position, int score);
     }
+
 
 }

@@ -89,7 +89,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
 
     private void foundDevice() {
         final Handler handler = new Handler();
