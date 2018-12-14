@@ -47,6 +47,8 @@ dependencies {
     implementation 'ru.github.igla:ferriswheel:1.2'
 
 
+    compile 'com.airbnb.android:lottie:1.5.3'
+
     compile 'com.github.yalantis:Side-Menu.Android:1.0.1'
 
     compile 'com.github.ozodrukh:CircularReveal:1.0.4'

@@ -1,5 +1,6 @@
 package edu.imac.nutc.tensorflowtest.ui.book;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import edu.imac.nutc.tensorflowtest.R;
 import info.hoang8f.widget.FButton;
@@ -32,6 +34,7 @@ public class BookFragment extends AppCompatActivity implements BookAdapter.ItemC
     }
 
     private RecyclerView recyclerView;
+    private RelativeLayout relativeLayout;
     private String bitmapPath;
     private ImageView backBk;
 
@@ -39,6 +42,7 @@ public class BookFragment extends AppCompatActivity implements BookAdapter.ItemC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_book);
+        relativeLayout = findViewById(R.id.relativeLayout);
         ((FButton) findViewById(R.id.mammalsBtn)).setOnClickListener(this);
         ((FButton) findViewById(R.id.fishBtn)).setOnClickListener(this);
         ((FButton) findViewById(R.id.birdsBtn)).setOnClickListener(this);
@@ -90,26 +94,33 @@ public class BookFragment extends AppCompatActivity implements BookAdapter.ItemC
         switch (v.getId()) {
             case R.id.mammalsBtn: {
                 setData("Mammals");
+                relativeLayout.setBackgroundColor(getResources().getColor(R.color.fbutton_color_alizarin));
                 break;
             }
             case R.id.amphibianBtn: {
                 setData("Amphibian");
+                relativeLayout.setBackgroundColor(getResources().getColor(R.color.fbutton_color_orange));
+
                 break;
             }
             case R.id.birdsBtn: {
                 setData("Bird");
+                relativeLayout.setBackgroundColor(getResources().getColor(R.color.fbutton_color_sun_flower));
                 break;
             }
             case R.id.fishBtn: {
                 setData("Fish");
+                relativeLayout.setBackgroundColor(getResources().getColor(R.color.fbutton_color_emerald));
                 break;
             }
             case R.id.reptileBtn: {
                 setData("Reptile");
+                relativeLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 break;
             }
             case R.id.otherBtn: {
                 setData("Other");
+                relativeLayout.setBackgroundColor(getResources().getColor(R.color.fbutton_color_amethyst));
                 break;
             }
             case R.id.backBk: {

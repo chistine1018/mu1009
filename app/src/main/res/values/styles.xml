@@ -14,7 +14,9 @@
 
 
     </style>
-
+    <style name="fragment_cover_button_02" >
+        <item name="android:background">@drawable/bg09</item>
+    </style>
 
 
 </resources>

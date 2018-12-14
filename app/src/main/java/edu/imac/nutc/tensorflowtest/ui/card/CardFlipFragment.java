@@ -54,19 +54,22 @@ public class CardFlipFragment extends AppCompatActivity implements ViewAnimator.
     private List<SlideMenuItem> lists = new ArrayList<>();
     private ContentFragment contentFragment;
     private ViewAnimator viewAnimator;
-    private int res = R.id.my_recycler;
+    private int res = R.id.containers;
     private LinearLayout linearLayout;
     private ArrayList<String> setBitmapPath;
     private String bitmapPath;
     private ArrayList<String> selectBmp;
+    private TextView category;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardflip);
 
+        category = findViewById(R.id.titleFC);
 
-        contentFragment = ContentFragment.newInstance(R.drawable.content_music);
+        contentFragment = ContentFragment.newInstance(this.res, 0);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_frame, contentFragment)
                 .commit();
@@ -91,22 +94,21 @@ public class CardFlipFragment extends AppCompatActivity implements ViewAnimator.
     private void createMenuList() {
         SlideMenuItem menuItem0 = new SlideMenuItem(ContentFragment.CLOSE, R.drawable.icn_close);
         lists.add(menuItem0);
-        SlideMenuItem menuItem = new SlideMenuItem(ContentFragment.BUILDING, R.drawable.icn_1);
+        SlideMenuItem menuItem = new SlideMenuItem(ContentFragment.BUILDING, R.drawable.mammal_icon);
         lists.add(menuItem);
-        SlideMenuItem menuItem2 = new SlideMenuItem(ContentFragment.BOOK, R.drawable.icn_2);
+        SlideMenuItem menuItem2 = new SlideMenuItem(ContentFragment.BOOK, R.drawable.amphibian);
         lists.add(menuItem2);
-        SlideMenuItem menuItem3 = new SlideMenuItem(ContentFragment.PAINT, R.drawable.icn_3);
+        SlideMenuItem menuItem3 = new SlideMenuItem(ContentFragment.PAINT, R.drawable.bird_icon);
         lists.add(menuItem3);
-        SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.CASE, R.drawable.icn_4);
+        SlideMenuItem menuItem4 = new SlideMenuItem(ContentFragment.CASE, R.drawable.fish_icon);
         lists.add(menuItem4);
-        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.SHOP, R.drawable.icn_5);
+        SlideMenuItem menuItem5 = new SlideMenuItem(ContentFragment.SHOP, R.drawable.reptile_icon);
         lists.add(menuItem5);
-        SlideMenuItem menuItem6 = new SlideMenuItem(ContentFragment.PARTY, R.drawable.icn_6);
+        SlideMenuItem menuItem6 = new SlideMenuItem(ContentFragment.PARTY, R.drawable.other_icon);
         lists.add(menuItem6);
-        SlideMenuItem menuItem7 = new SlideMenuItem(ContentFragment.MOVIE, R.drawable.icn_7);
+        SlideMenuItem menuItem7 = new SlideMenuItem(ContentFragment.MOVIE, R.drawable.ic_dashboard_black_24dp);
         lists.add(menuItem7);
     }
-
 
 
     public void onClick(View view) {
@@ -116,7 +118,6 @@ public class CardFlipFragment extends AppCompatActivity implements ViewAnimator.
                 break;
         }
     }
-
 
 
     private void setActionBar() {
@@ -187,31 +188,31 @@ public class CardFlipFragment extends AppCompatActivity implements ViewAnimator.
 //    }
 
     private ScreenShotable replaceFragment(ScreenShotable screenShotable, int topPosition) {
-//        switch (topPosition) {
-//            case 378:
-//                select(1, "Mammals");
-//                break;
-//            case 588:
-//                select(2, "Amphibian");
-//                break;
-//            case 798:
-//                select(3, "Bird");
-//                break;
-//            case 1008:
-//                select(4, "Fish");
-//                break;
-//            case 1218:
-//                select(5, "Reptile");
-//                break;
-//            case 1428:
-//                select(6, "Other");
-////                this.res = R.drawable.content_music;
-//                break;
-//            default:
-//                break;
-//
-//        }
 
+        switch (topPosition) {
+            case 378:
+                category.setText("Mammals");
+                break;
+            case 588:
+                category.setText("Amphibian");
+                break;
+            case 798:
+                category.setText("Bird");
+                break;
+            case 1008:
+                category.setText("Fish");
+                break;
+            case 1218:
+                category.setText("Reptile");
+                break;
+            case 1428:
+                category.setText("Other");
+//                this.res = R.drawable.content_music;
+                break;
+            default:
+                category.setText("Total");
+
+        }
         Log.e("eeee", "replaceFragment: " + topPosition);
 //        this.res = this.res == R.drawable.content_music ? R.drawable.content_films : R.drawable.content_music;
         View view = findViewById(R.id.content_frame);
@@ -220,31 +221,12 @@ public class CardFlipFragment extends AppCompatActivity implements ViewAnimator.
         animator.setInterpolator(new AccelerateInterpolator());
         animator.setDuration(ViewAnimator.CIRCULAR_REVEAL_ANIMATION_DURATION);
 
-        findViewById(R.id.content_overlay).setBackgroundDrawable(new BitmapDrawable(getResources(), screenShotable.getBitmap()));
+        findViewById(R.id.content_frame).setBackgroundDrawable(new BitmapDrawable(getResources(), screenShotable.getBitmap()));
         animator.start();
-        ContentFragment contentFragment = ContentFragment.newInstance(this.res);
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, contentFragment).commit();
+        ContentFragment contentFragment = ContentFragment.newInstance(this.res, topPosition);
+        getSupportFragmentManager().beginTransaction().replace(R.id.containers, contentFragment).commit();
         return contentFragment;
     }
-
-//    public void select(int number, String name) {
-//        setBitmapPath = new ArrayList<>();
-//        bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/" + name;
-//        File directory = new File(bitmapPath);
-//        File[] imgAmount = directory.listFiles();
-//        if (imgAmount != null) {
-//            for (int j = 0; j < imgAmount.length; j++) {
-//                setBitmapPath.add(imgAmount[j].getPath());
-//            }
-//        }
-//
-//        if (setBitmapPath.size() >= 7) {
-//            selcetImgType();
-//        }
-////        selectBmp = new ArrayList<>();
-//
-//
-//    }
 
 
     @Override

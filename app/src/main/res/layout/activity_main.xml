@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#F6AB60">
+    android:background="@drawable/bg08">
 
 
     <ImageView
@@ -25,23 +27,35 @@
         app:rb_scale="4"
         app:rb_type="fillRipple">
 
-        <ImageView
-            android:id="@+id/centerImage"
-            android:layout_width="140dp"
-            android:layout_height="180dp"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_views_cute"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="210dp"
-            android:src="@drawable/dog09"
-            android:transitionName="sharedView" />
+            android:layout_marginTop="190dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="dino_dance.json"
+            app:lottie_loop="true"
+
+            />
+
+        <!--<ImageView-->
+            <!--android:id="@+id/centerImage"-->
+            <!--android:layout_width="140dp"-->
+            <!--android:layout_height="180dp"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_marginTop="210dp"-->
+            <!--android:src="@drawable/dog09"-->
+            <!--android:transitionName="sharedView" />-->
 
         <ImageView
             android:id="@+id/foundDevice"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:layout_above="@id/centerImage"
+            android:layout_above="@id/animation_views_cute"
             android:layout_marginBottom="32dp"
             android:layout_marginRight="6dp"
-            android:layout_toLeftOf="@id/centerImage"
+            android:layout_toLeftOf="@id/animation_views_cute"
             android:src="@drawable/back"
             android:visibility="invisible" />
     </com.skyfishjy.library.RippleBackground>
@@ -50,29 +64,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
-
-
+        android:orientation="horizontal">
 
 
         <TextView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/title01"
-        android:gravity="center"
-        android:paddingStart="30dp"
-        android:text="AnimalGò"
-        android:textSize="24dp"
-        android:transitionName="sharedView"/>
+            android:layout_width="160dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="AnimalGò"
+            android:textColor="@color/fbutton_color_sun_flower"
+            android:textSize="36dp"
+            android:textStyle="italic"
+            android:transitionName="sharedView" />
 
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="240dp"
-            android:background="@drawable/dog09"
-            android:visibility="gone" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_views"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="party_penguin.json"
+            app:lottie_loop="true"
+
+            />
+
+    </LinearLayout>
+    <!--<ImageView-->
+    <!--android:layout_width="200dp"-->
+    <!--android:layout_height="240dp"-->
+    <!--android:background="@drawable/dog09"-->
+    <!--android:visibility="gone" />-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"

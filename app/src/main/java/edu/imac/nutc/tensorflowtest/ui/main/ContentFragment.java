@@ -59,14 +59,15 @@ public class ContentFragment extends Fragment implements ScreenShotable, MyRecyc
 
     private View containerView;
     protected ImageView mImageView;
-    protected int res;
+    protected int res, position;
     private Bitmap bitmap;
     RecyclerView recyclerView;
 
-    public static ContentFragment newInstance(int resId) {
+    public static ContentFragment newInstance(int resId, int position) {
         ContentFragment contentFragment = new ContentFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(Integer.class.getName(), resId);
+        bundle.putInt("ddd", position);
         contentFragment.setArguments(bundle);
         return contentFragment;
     }
@@ -105,23 +106,49 @@ public class ContentFragment extends Fragment implements ScreenShotable, MyRecyc
             selectRegister[i] = 1;
         }
 
-        //imgSelect
-        setBitmapPath = new ArrayList<>();
-        selectBmp = new ArrayList<>();
-        String[] imgType = {"Mammals", "Amphibian", "Bird", "Fish", "Reptile", "Other"};
-        for (int i = 0; i <= 5; i++) {
-            bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/" + imgType[i];
-            File directory = new File(bitmapPath);
-            File[] imgAmount = directory.listFiles();
-            if (imgAmount != null) {
-                for (int j = 0; j < imgAmount.length; j++) {
-                    setBitmapPath.add(imgAmount[j].getPath());
+        switch (position) {
+            case 378:
+                select("Mammals");
+                break;
+            case 588:
+                select("Amphibian");
+                break;
+            case 798:
+                select("Bird");
+                break;
+            case 1008:
+                select("Fish");
+                break;
+            case 1218:
+                select("Reptile");
+                break;
+            case 1428:
+                select("Other");
+//                this.res = R.drawable.content_music;
+                break;
+            default:
+                //imgSelect
+                setBitmapPath = new ArrayList<>();
+                selectBmp = new ArrayList<>();
+                String[] imgType = {"Mammals", "Amphibian", "Bird", "Fish", "Reptile", "Other"};
+                for (int i = 0; i <= 5; i++) {
+                    bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/" + imgType[i];
+                    File directory = new File(bitmapPath);
+                    File[] imgAmount = directory.listFiles();
+                    if (imgAmount != null) {
+                        for (int j = 0; j < imgAmount.length; j++) {
+                            setBitmapPath.add(imgAmount[j].getPath());
+                        }
+                    }
                 }
-            }
+                if (setBitmapPath.size() >= 7) {
+                    selcetImgType();
+                }
+                break;
+
         }
-        if (setBitmapPath.size() >= 7) {
-            selcetImgType();
-        }
+
+
         int numberOfColumns = 3;
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), numberOfColumns));
         //Log.e("sele", "selcetImgType: "+selectBmp.toString() );
@@ -146,11 +173,32 @@ public class ContentFragment extends Fragment implements ScreenShotable, MyRecyc
 
     }
 
+    public void select(String name) {
+        selectBmp = new ArrayList<>();
+        setBitmapPath = new ArrayList<>();
+        bitmapPath = Environment.getExternalStorageDirectory().toString() + "/Pictures/" + name;
+        File directory = new File(bitmapPath);
+        File[] imgAmount = directory.listFiles();
+        if (imgAmount != null) {
+            for (int j = 0; j < imgAmount.length; j++) {
+                setBitmapPath.add(imgAmount[j].getPath());
+            }
+        }
+
+        if (setBitmapPath.size() >= 7) {
+            selcetImgType();
+        }
+//        selectBmp = new ArrayList<>();
+
+
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         res = getArguments().getInt(Integer.class.getName());
+        position = getArguments().getInt("ddd");
 
     }
 
@@ -216,11 +264,11 @@ public class ContentFragment extends Fragment implements ScreenShotable, MyRecyc
 //        mImageView.setImageResource(res);
         this.containerView = view.findViewById(R.id.containers);
 
-
         passTextView = view.findViewById(R.id.pass_tv);
         backCf = view.findViewById(R.id.backCf);
         recyclerView = view.findViewById(R.id.my_recycler);
         t = view.findViewById(R.id.userTimerText);
+
         return view;
     }
 

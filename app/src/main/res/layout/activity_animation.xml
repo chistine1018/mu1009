@@ -2,44 +2,72 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/container"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6AB60"
+    android:background="@drawable/bg08"
     tools:context=".ui.main.AnimationActivity">
+
     <Button
+        android:id="@+id/firstSharedView"
         android:layout_width="match_parent"
         android:layout_height="80dp"
+        android:layout_below="@id/animation_view"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
-        android:id="@+id/firstSharedView"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/title01"
-        android:gravity="center"
-        android:paddingStart="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_round_register"
         android:text="AnimalGò"
-        android:layout_below="@+id/ferrisWheelView"
-        android:transitionName="sharedView"
-        android:textSize="24dp" />
-    <ru.github.igla.ferriswheel.FerrisWheelView
-        android:id="@+id/ferrisWheelView"
+        android:textColor="@color/fbutton_color_sun_flower"
+        android:textSize="24dp"
+        android:textStyle="italic"
+        android:transitionName="sharedView" />
+    <Button
+        android:id="@+id/btn_about"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="100dp"
-        android:layout_gravity="center"
-        app:fwv_baseStrokeColor="@color/fbutton_color_sun_flower"
-        app:fwv_cabinLineStrokeColor="@color/fbutton_color_green_sea"
-        app:fwv_cabinsNumber="5"
-        app:fwv_rotateSpeed="0"
-        app:fwv_wheelStrokeColor="@color/colorPrimaryDark" />
-    <!--<View-->
-        <!--android:id="@+id/firstSharedView"-->
-        <!--android:layout_width="100dp"-->
-        <!--android:layout_height="100dp"-->
-        <!--android:background="#00cc00"-->
-        <!--android:onClick="onClicks"-->
-        <!--android:transitionName="sharedView" />-->
+        android:layout_height="80dp"
+        android:layout_below="@id/firstSharedView"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/login_round_register"
+        android:text="About Us"
+        android:textColor="@color/fbutton_color_sun_flower"
+        android:textSize="24dp"
+        android:textStyle="italic"
+        />
+    <!--<ru.github.igla.ferriswheel.FerrisWheelView-->
+    <!--android:id="@+id/ferrisWheelView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="400dp"-->
+    <!--android:layout_marginTop="100dp"-->
+    <!--android:layout_gravity="center"-->
+    <!--app:fwv_baseStrokeColor="@color/fbutton_color_sun_flower"-->
+    <!--app:fwv_cabinLineStrokeColor="@color/fbutton_color_green_sea"-->
+    <!--app:fwv_cabinsNumber="5"-->
+    <!--app:fwv_rotateSpeed="0"-->
+    <!--app:fwv_wheelStrokeColor="@color/colorPrimaryDark" />-->
 
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content"
+        app:lottie_fileName="dog.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+
+       />
+
+
+    <!--<View-->
+    <!--android:id="@+id/firstSharedView"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:background="#00cc00"-->
+    <!--android:onClick="onClicks"-->
+    <!--android:transitionName="sharedView" />-->
 
 
 </RelativeLayout>

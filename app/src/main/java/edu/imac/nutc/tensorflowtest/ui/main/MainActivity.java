@@ -75,18 +75,11 @@ public class MainActivity extends AppCompatActivity {
                     judge = false;
 
                 }
-            }, 3000);
+            }, 2500);
         }
 
 
-        ImageView imageView = (ImageView) findViewById(R.id.centerImage);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
     @Override
@@ -123,11 +116,11 @@ public class MainActivity extends AppCompatActivity {
                                 rippleBackground.stopRippleAnimation();
 
                             }
-                        }, 1500);
+                        }, 500);
                     }
-                }, 1500);
+                }, 500);
             }
-        }, 1500);
+        }, 500);
 
         animatorSet.start();
 
